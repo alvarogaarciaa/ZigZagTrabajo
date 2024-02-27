@@ -6,6 +6,7 @@ public class JugadorBola : MonoBehaviour
 {
     public Camera camara;
     public GameObject suelo;
+    public GameObject estrella;
     public float velocidad = 5.0f;
 
 
@@ -52,10 +53,23 @@ public class JugadorBola : MonoBehaviour
             ValZ += 6.0f;
         }
         Instantiate(suelo, new Vector3(ValX, 0, ValZ), Quaternion.identity);
+
+        float aleatorioEstrella = Random.Range(0.0f, 1.0f);
+        if (aleatorioEstrella > 0.5)
+        {
+            yield return new WaitForSeconds(2);
+            Instantiate(estrella, new Vector3(ValX - 3, 1.5f, ValZ - 3), estrella.transform.rotation);
+        }else{
+            yield return new WaitForSeconds(2);
+            Instantiate(estrella, new Vector3(ValX + 3, 1.5f, ValZ + 3), estrella.transform.rotation);
+        }
+
         yield return new WaitForSeconds(2);
+
         suelo.gameObject.GetComponent<Rigidbody>().isKinematic = false;
         suelo.gameObject.GetComponent<Rigidbody>().useGravity = true;
         yield return new WaitForSeconds(2);
+        
         Destroy(suelo);
     }
 
