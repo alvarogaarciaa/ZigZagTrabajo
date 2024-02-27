@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class rotacion : MonoBehaviour
 {
-    public float speed = 30.0f;
+    public float speed = 100.0f;
+    public AudioClip sonido;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,5 +18,14 @@ public class rotacion : MonoBehaviour
     void Update()
     {
         transform.Rotate(Vector3.up, speed * Time.deltaTime, Space.World);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Pelota"))
+        {
+            // Reproducir sonido
+            AudioSource.PlayClipAtPoint(sonido, transform.position);
+        }
     }
 }

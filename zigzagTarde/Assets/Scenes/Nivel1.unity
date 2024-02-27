@@ -477,7 +477,7 @@ GameObject:
   - component: {fileID: 1496096710}
   m_Layer: 0
   m_Name: Jugador
-  m_TagString: Untagged
+  m_TagString: Pelota
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -610,7 +610,9 @@ MonoBehaviour:
   camara: {fileID: 1259972385}
   suelo: {fileID: 2117591394}
   estrella: {fileID: 763907211}
+  particula: {fileID: 580766213513220187, guid: 97951f1c504014c4ebcbe46f09a2bea5, type: 3}
   velocidad: 10
+  Contador: {fileID: 827253377}
 --- !u!1 &1902137937
 GameObject:
   m_ObjectHideFlags: 0
@@ -796,6 +798,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: a91f9f18daad3d04dbc16a01e489055b, type: 2}
     - target: {fileID: 8257357322838624826, guid: 97951f1c504014c4ebcbe46f09a2bea5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8257357322838624826, guid: 97951f1c504014c4ebcbe46f09a2bea5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -848,6 +854,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4294367892028190058, guid: a50a507827d9d1f4c82d1453df20898e, type: 3}
+      propertyPath: speed
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4294367892028190058, guid: a50a507827d9d1f4c82d1453df20898e, type: 3}
+      propertyPath: sonido
+      value: 
+      objectReference: {fileID: 8300000, guid: 6d849f14a6670e742a612f9ecddbbf36, type: 3}
     - target: {fileID: 5405413300728502803, guid: a50a507827d9d1f4c82d1453df20898e, type: 3}
       propertyPath: m_IsTrigger
       value: 1

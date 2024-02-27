@@ -7,6 +7,7 @@ TagManager:
   - BotonSalir
   - Suelo
   - Premio
+  - Pelota
   layers:
   - Default
   - TransparentFX

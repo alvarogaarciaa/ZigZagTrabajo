@@ -38,6 +38,10 @@ public class JugadorBola : MonoBehaviour
 
         transform.Translate(DireccionActual * velocidad * Time.deltaTime);
 
+        if (totalEstrellas == 15)
+        {
+            CargarSiguienteEscena();
+        }
     }
 
 
@@ -74,9 +78,14 @@ public class JugadorBola : MonoBehaviour
         }
 
         suelo_actual = Instantiate(suelo, new Vector3(ValX, 0, ValZ), Quaternion.identity).transform;
-        if (estrella_aleatorio < 1)
+
+        if (estrella_aleatorio > 0.5)
         {
-            Instantiate(estrella, suelo_actual.position + (Vector3.up), estrella.transform.rotation);
+            yield return new WaitForSeconds(2);
+            Instantiate(estrella, new Vector3(ValX - 2, 1.5f, ValZ - 2), estrella.transform.rotation);
+        }else{
+            yield return new WaitForSeconds(2);
+            Instantiate(estrella, new Vector3(ValX + 2, 1.5f, ValZ + 2), estrella.transform.rotation);
         }
 
         yield return new WaitForSeconds(2);
@@ -107,5 +116,10 @@ public class JugadorBola : MonoBehaviour
             ValZ += 6.0f;
             Instantiate(suelo, new Vector3(ValX, 0, ValZ), Quaternion.identity);
         }
+    }
+
+    void CargarSiguienteEscena()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
     }
 }
