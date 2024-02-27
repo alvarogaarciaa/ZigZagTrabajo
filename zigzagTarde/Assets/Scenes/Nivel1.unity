@@ -191,6 +191,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &763907211 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7333884762173701947, guid: a50a507827d9d1f4c82d1453df20898e, type: 3}
+  m_PrefabInstance: {fileID: 6652584762134649687}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &827253375
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,7 +609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camara: {fileID: 1259972385}
   suelo: {fileID: 2117591394}
-  estrella: {fileID: 0}
+  estrella: {fileID: 763907211}
   velocidad: 10
 --- !u!1 &1902137937
 GameObject:
@@ -843,6 +848,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5405413300728502803, guid: a50a507827d9d1f4c82d1453df20898e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6975115921022223700, guid: a50a507827d9d1f4c82d1453df20898e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.00000004211108

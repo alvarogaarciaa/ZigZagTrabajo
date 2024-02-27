@@ -1,18 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class JugadorBola : MonoBehaviour
 {
     public Camera camara;
     public GameObject suelo;
     public GameObject estrella;
+    public GameObject particula;
     public float velocidad = 5.0f;
+    public Text Contador;
 
 
     private Vector3 offset;
     private float ValX, ValZ;
     private Vector3 DireccionActual;
+    private Transform suelo_actual;
+    private int totalEstrellas = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +40,18 @@ public class JugadorBola : MonoBehaviour
 
     }
 
+
+    private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.CompareTag("Premio"))
+            {
+                Instantiate(particula, other.gameObject.transform.position, particula.transform.rotation);
+                totalEstrellas++;
+                Contador.text = "Puntos: " + totalEstrellas;
+                Destroy(other.gameObject);
+            }
+        }
+
     private void OnCollisionExit(Collision other){
         if (other.gameObject.tag == "Suelo")
         {
@@ -41,8 +59,10 @@ public class JugadorBola : MonoBehaviour
         }
     }
 
+
     IEnumerator BorrarSuelo(GameObject suelo)
     {
+        int estrella_aleatorio = Random.Range(0, 4);
         float aleatorio = Random.Range(0.0f, 1.0f);
         if (aleatorio > 0.5)
         {
@@ -52,16 +72,11 @@ public class JugadorBola : MonoBehaviour
         {
             ValZ += 6.0f;
         }
-        Instantiate(suelo, new Vector3(ValX, 0, ValZ), Quaternion.identity);
 
-        float aleatorioEstrella = Random.Range(0.0f, 1.0f);
-        if (aleatorioEstrella > 0.5)
+        suelo_actual = Instantiate(suelo, new Vector3(ValX, 0, ValZ), Quaternion.identity).transform;
+        if (estrella_aleatorio < 1)
         {
-            yield return new WaitForSeconds(2);
-            Instantiate(estrella, new Vector3(ValX - 3, 1.5f, ValZ - 3), estrella.transform.rotation);
-        }else{
-            yield return new WaitForSeconds(2);
-            Instantiate(estrella, new Vector3(ValX + 3, 1.5f, ValZ + 3), estrella.transform.rotation);
+            Instantiate(estrella, suelo_actual.position + (Vector3.up), estrella.transform.rotation);
         }
 
         yield return new WaitForSeconds(2);
