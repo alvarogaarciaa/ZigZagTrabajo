@@ -50,7 +50,7 @@ public class JugadorBola : MonoBehaviour
 
         transform.Translate(DireccionActual * velocidad * Time.deltaTime);
 
-        if (totalEstrellas == 15)
+        if (totalEstrellas >= 15)
         {
             CargarSiguienteEscena();
         }
