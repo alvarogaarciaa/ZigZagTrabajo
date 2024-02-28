@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class JugadorBola : MonoBehaviour
@@ -12,25 +13,36 @@ public class JugadorBola : MonoBehaviour
     public GameObject particula;
     public float velocidad = 5.0f;
     public Text Contador;
-
+    public GameObject PanelGameOver;
+    public GameObject ZonaMuerte;
+    public Button boton;
 
     private Vector3 offset;
     private float ValX, ValZ;
     private Vector3 DireccionActual;
     private Transform suelo_actual;
     private int totalEstrellas = 0;
+    private Rigidbody rbEsfera;
     // Start is called before the first frame update
     void Start()
     {
+        rbEsfera = this.GetComponent<Rigidbody>();
         offset = camara.transform.position;
         CrearSueloInicial();
         DireccionActual = Vector3.forward;
+
+    }
+
+    void Reiniciar()
+    {
+        SceneManager.LoadScene("Nivel1");
     }
 
     // Update is called once per frame
     void Update()
     {
         camara.transform.position = transform.position + offset;
+        ZonaMuerte.transform.position = new Vector3(this.transform.position.x, -3, this.transform.position.z);
         if (Input.GetKeyUp(KeyCode.Space))
         {
             CambiarDireccion();
@@ -53,6 +65,13 @@ public class JugadorBola : MonoBehaviour
                 totalEstrellas++;
                 Contador.text = "Puntos: " + totalEstrellas;
                 Destroy(other.gameObject);
+            }
+
+            if (other.gameObject.CompareTag("Muerte"))
+            {
+                PanelGameOver.SetActive(true);
+                rbEsfera.velocity = Physics.gravity;
+                Destroy(gameObject);
             }
         }
 
@@ -120,6 +139,6 @@ public class JugadorBola : MonoBehaviour
 
     void CargarSiguienteEscena()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("GameOver");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Victoria");
     }
 }

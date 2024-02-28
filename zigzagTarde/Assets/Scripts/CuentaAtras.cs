@@ -9,6 +9,7 @@ public class CuentaAtras : MonoBehaviour
     private Button boton;
     public Image imagen;
     public Sprite[] numeros;
+    public Text texto;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class CuentaAtras : MonoBehaviour
     {
         imagen.gameObject.SetActive(true);
         boton.gameObject.SetActive(false);
+        texto.gameObject.SetActive(false);
 
         StartCoroutine(PonerNumeros());
         //SceneManager.LoadScene("Menu");
