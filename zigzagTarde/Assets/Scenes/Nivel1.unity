@@ -947,7 +947,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.25438842, y: -0, z: -0, w: 0.96710217}
   m_LocalPosition: {x: -0.02, y: 2.73, z: -0.14}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.8, y: 1.8, z: 1.8}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1529507211}
@@ -996,11 +996,13 @@ MonoBehaviour:
   suelo: {fileID: 2117591394}
   estrella: {fileID: 7333884762173701947, guid: a50a507827d9d1f4c82d1453df20898e, type: 3}
   particula: {fileID: 580766213513220187, guid: 97951f1c504014c4ebcbe46f09a2bea5, type: 3}
-  velocidad: 10
+  velocidad: 9
   Contador: {fileID: 827253377}
   PanelGameOver: {fileID: 1907182663}
   ZonaMuerte: {fileID: 761270890}
   boton: {fileID: 1532851196}
+  audioDerecha: {fileID: 8300000, guid: 800cc7dcbb369ee43a7d57d3764d2da4, type: 3}
+  audioRecto: {fileID: 8300000, guid: f15440d55563d5b42bba039775fc84a1, type: 3}
 --- !u!114 &1496096711
 MonoBehaviour:
   m_ObjectHideFlags: 0

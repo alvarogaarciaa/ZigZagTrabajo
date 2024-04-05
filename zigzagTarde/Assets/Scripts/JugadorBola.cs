@@ -16,6 +16,8 @@ public class JugadorBola : MonoBehaviour
     public GameObject PanelGameOver;
     public GameObject ZonaMuerte;
     public Button boton;
+    public AudioClip audioDerecha;
+    public AudioClip audioRecto;
 
     private Vector3 offset;
     private float ValX, ValZ;
@@ -23,9 +25,11 @@ public class JugadorBola : MonoBehaviour
     private Transform suelo_actual;
     private int totalEstrellas = 0;
     private Rigidbody rbEsfera;
+    private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         rbEsfera = this.GetComponent<Rigidbody>();
         offset = camara.transform.position;
         CrearSueloInicial();
@@ -121,10 +125,15 @@ public class JugadorBola : MonoBehaviour
         if (DireccionActual == Vector3.forward)
         {
             DireccionActual = Vector3.right;
+
+            audioSource.clip = audioDerecha;
+            audioSource.Play();
         }
         else
         {
             DireccionActual = Vector3.forward;
+            audioSource.clip = audioRecto;
+            audioSource.Play();
         }
     }
 
